@@ -1,9 +1,4 @@
-# VideoDrive-XAI
-## Explainable End-to-End Autonomous Driving
-
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.1+-orange.svg)](https://pytorch.org)
-[![Streamlit](https://img.shields.io/badge/Streamlit-Demo-blue.svg)](https://streamlit.io)
-
+# GlassBoxDriver: Post-Hoc XAI for Autonomous Vehicle Actions (Explainable End-to-End Autonomous Driving)
 ---
 
 ## Project Overview
@@ -24,15 +19,6 @@ from real-world errors.
 - **Review**: Human corrects AI mistakes through the UI
 - **Retrain**: Model learns from human corrections
 - **Repeat**: System continuously improves with use
-
-**5 Predicted Actions:**
-| Action | Trigger Condition |
-|---|---|
-| Go Straight | Default- no strong signal |
-| Brake | brake_switch active OR brake > 5 |
-| Accelerate | throttle > 200 AND speed > 5 |
-| Turn Left | steering > 0.3 rad |
-| Turn Right | steering < -0.3 rad |
 
 ## Streamlit UI Pages
 
@@ -56,8 +42,15 @@ Real-time predictions overlaid on game footage with steering arc and probability
 <img src="Images/SS turn left1.png" alt="Turn Left Prediction" width="400"/><img src="Images/SS turn right1.png" alt="Turn Right Prediction" width="400"/>
 <img src="Images/SS brake2.png" alt="Brake Prediction 2" width="400"/>
 
+**5 Predicted Actions:**
+| Action | Trigger Condition |
+|---|---|
+| Go Straight | Default- no strong signal |
+| Brake | brake_switch active OR brake > 5 |
+| Accelerate | throttle > 200 AND speed > 5 |
+| Turn Left | steering > 0.3 rad |
+| Turn Right | steering < -0.3 rad |
 ---
-
 ## Installation
 
 ### 1. Clone the Repository
@@ -90,9 +83,8 @@ pip install streamlit opencv-python timm matplotlib tqdm mss pillow
 ### Step 1 - Download nuScenes Mini Dataset
 
 1. Go to: https://www.nuscenes.org/nuscenes
-2. Create a free account and log in
-3. Go to the **Download** page
-4. Download **nuScenes Mini** (approx 4GB)
+2. Go to the **Download** page
+3. Download **nuScenes Mini** (approx 4GB)
     - File: `v1.0-mini.tgz`
 
 ### Step 2 - Download CAN Bus Data
@@ -138,9 +130,6 @@ Open `dataset.py` and update line 6 to your local nuScenes path:
 NUSCENES_ROOT = r"C:\your\path\to\data\nuscenes"
 ```
 
-
----
-
 ## Project Structure
 
 ```
@@ -176,18 +165,15 @@ GlassBoxDriver/
 ├── output/                 # Annotated audit videos saved here
 ├── logs/                   # Session CSV logs saved here
 └── README.md
-├── utils/
+└── utils/
     └──balance_dataset.py #Undersample all classes to equal size
     └──check_canbus.py #run this to see structure
     └──check_dataset.py #Verify images + labels are correctly paired
     └──fix_cleanup.py #Delete all augmented files (keep only originals)
     └──aug_data.py Flip images to augment
     └──review_app.py #Human review UI for flagged frames
-    └── 
+     
 ```
-
-
----
 
 ## Running the Project
 
@@ -217,7 +203,6 @@ Class distribution:
   Turn Right  :  620
 ```
 
-
 ### Step 2 - (Optional) Balance Classes
 
 ```bash
@@ -231,31 +216,41 @@ Undersamples all classes to match the smallest class count for perfectly balance
 ```bash
 python train.py
 ```
-
-- Trains for 20 epochs on GPU
-- Saves best model to `models/driving_cnn.pth`
-- Expected best validation accuracy: ~88-92%
-- Estimated training time: ~20 minutes on GPU
-
-
-### Step 4 - Launch Streamlit UI
-
+### Step 4.1 - Run on hardcoded video path (without Ui)
+```bash
+python analyse.py
+```
+### Step 4.2 - Launch Streamlit UI (upload,audit,xai,humanFeedback,retrain,full logs)
 ```bash
 streamlit run app.py
 ```
 
-Opens automatically at `http://localhost:8501`
-
-### Step 5 - (Optional) Live Screen Inference
-
+### Step 4.3 - Live Screen Inference
 ```bash
 python screen_ai.py
 ```
-
 Captures your full screen in real-time and predicts driving actions live.
 Press `Q` to quit.
 
 ---
+
+## Model Architecture
+
+```
+Input Image (224x224x3)
+        |
+EfficientNet-B0 Backbone (pretrained ImageNet)
+        |
+       1280 features
+    /              \
+action_head          steering_head
+Linear(1280->256)     Linear(1280->1)
+ReLU + Dropout(0.3)
+Linear(256->5)
+        |                 |
+5 class probs        steering angle
+(softmax)            (tanh * 30 deg)
+```
 
 ## How It Works
 
@@ -319,31 +314,6 @@ Apply get_label() rules:
   else                                -->  Go Straight
 ```
 
-
----
-
-
-
-## 📊 Model Architecture
-
-```
-Input Image (224x224x3)
-        |
-EfficientNet-B0 Backbone (pretrained ImageNet)
-        |
-       1280 features
-    /              \
-action_head          steering_head
-Linear(1280->256)     Linear(1280->1)
-ReLU + Dropout(0.3)
-Linear(256->5)
-        |                 |
-5 class probs        steering angle
-(softmax)            (tanh * 30 deg)
-```
-
-
----
 
 ## Credits
 
