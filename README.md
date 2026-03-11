@@ -337,34 +337,24 @@ collaborating, or building on top of it — contributions are very welcome!
 
 1. **Larger Dataset**: Integrate full nuScenes (1000 scenes) or BDD100K for
    broader driving coverage and better generalization
-
 2. **Model Architecture**: Experiment with temporal models (LSTM, Transformer)
    that use sequences of frames instead of single frames for richer context
-
 3. **Better Labelling**: Replace hard threshold rules in `get_label()` with
    smoother or learned labels from steering angle regression
-
 4. **Sim-to-Real Transfer**: Add synthetic driving data from simulators like
    CARLA, BeamNG, or GTA V to improve game footage predictions
-
 5. **Grad-CAM Improvements**: Replace Grad-CAM with GradCAM++, EigenCAM or
    SHAP for more accurate and stable heatmaps
-
 6. **Active Learning**: Smarter flagging strategy that selects the most
    informative uncertain frames for human review
-
 7. **Steering Arc Bug Fix**: Left and Right labels on the overlay arc are
    currently inverted — needs a sign correction in `draw_steering_overlay()`
-
 8. **Also open to any other Contributions**
 ---
 
-### 📬 Get in Touch
-
+### Get in Touch
 If you want to collaborate, raise an issue or start a discussion on GitHub:
-
 ⭐ **Star the repo** if you find it useful- it helps others discover the project!
-
 > Built with curiosity and a lot of debugging. —[@Ravevx](https://github.com/Ravevx)
 
 
