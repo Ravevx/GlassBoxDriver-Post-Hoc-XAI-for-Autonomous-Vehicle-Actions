@@ -314,6 +314,59 @@ Apply get_label() rules:
   else                                -->  Go Straight
 ```
 
+## 🤝 Open for Collaboration
+
+GlassBoxDriver is an ongoing project and still has known limitations we are
+actively trying to solve. If you are interested in improving this system,
+collaborating, or building on top of it — contributions are very welcome!
+
+### Known Issues & Open Problems
+
+| Problem | Current State | What's Needed |
+|---|---|---|
+| Model predicts Go Straight too often | Domain shift from nuScenes to real/game footage | More diverse training data |
+| Only 10 nuScenes Mini scenes used | ~6400 images, too small for generalization | Full nuScenes dataset (1000 scenes) |
+| Labels come from CAN bus rules | Rigid threshold-based labelling | Learned or smoother label generation |
+| Left/Right arc overlay is flipped | Known visual bug in steering arc | Fix in `draw_steering_overlay()` |
+| No temporal context | Each frame predicted independently | Add LSTM or temporal attention |
+| Game footage not in training data | Model never saw rendered graphics | Add GTA VC / BeamNG / sim data |
+
+---
+
+### Areas to Contribute
+
+1. **Larger Dataset**: Integrate full nuScenes (1000 scenes) or BDD100K for
+   broader driving coverage and better generalization
+
+2. **Model Architecture**: Experiment with temporal models (LSTM, Transformer)
+   that use sequences of frames instead of single frames for richer context
+
+3. **Better Labelling**: Replace hard threshold rules in `get_label()` with
+   smoother or learned labels from steering angle regression
+
+4. **Sim-to-Real Transfer**: Add synthetic driving data from simulators like
+   CARLA, BeamNG, or GTA V to improve game footage predictions
+
+5. **Grad-CAM Improvements**: Replace Grad-CAM with GradCAM++, EigenCAM or
+   SHAP for more accurate and stable heatmaps
+
+6. **Active Learning**: Smarter flagging strategy that selects the most
+   informative uncertain frames for human review
+
+7. **Steering Arc Bug Fix**: Left and Right labels on the overlay arc are
+   currently inverted — needs a sign correction in `draw_steering_overlay()`
+
+8. **Also open to any other Contributions**
+---
+
+### 📬 Get in Touch
+
+If you want to collaborate, raise an issue or start a discussion on GitHub:
+
+⭐ **Star the repo** if you find it useful- it helps others discover the project!
+
+> Built with curiosity and a lot of debugging. —[@Ravevx](https://github.com/Ravevx)
+
 
 ## Credits
 
