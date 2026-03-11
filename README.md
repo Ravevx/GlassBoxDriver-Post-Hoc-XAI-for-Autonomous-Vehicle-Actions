@@ -36,7 +36,8 @@ from real-world errors.
 
 ## Streamlit UI Pages
 
-<img src="images/UI_Runaudit.png" alt="UI_RunAudit" width="500"/>
+<img src="Images/UI_Runaudit.png" alt="UI_RunAudit" width="500"/> <img src="Images/UI_ReviewFlags.png" alt="UI_HumanReview" width="500"/>
+
 | Page | Description |
 | :-- | :-- |
 | Home | Project overview and system architecture |
@@ -44,20 +45,17 @@ from real-world errors.
 | Review Flags | View flagged uncertain frames and correct AI mistakes |
 | Feedback Retrain | Merge human corrections into training data and retrain |
 | Session Logs | View past audit sessions, action distribution charts, trust over time |
+---
 
-<img src="images/UI_ReviweFlags.png" alt="UI_HumanReview" width="500"/>
 
 ### 🎮 Live Screen Inference (screen_ai.py)
 
 Real-time predictions overlaid on game footage with steering arc and probability bars:
-<img src="images/SS BRAKE.png" alt="Brake Prediction" width="500"/>
-<img src="images/SS go straight.png" alt="Go Straight Prediction" width="500"/>
-<img src="images/SS turn left1.png" alt="Turn Left Prediction" width="500"/>
-<img src="images/SS turn right1.png" alt="Turn Right Prediction" width="500"/>
-<img src="images/SS brake2.png" alt="Brake Prediction 2" width="500"/>
 
+<img src="Images/SS BRAKE.png" alt="Brake Prediction" width="400"/><img src="Images/SS go straight.png" alt="Go Straight Prediction" width="400"/>
+<img src="Images/SS turn left1.png" alt="Turn Left Prediction" width="400"/><img src="Images/SS turn right1.png" alt="Turn Right Prediction" width="400"/>
+<img src="Images/SS brake2.png" alt="Brake Prediction 2" width="400"/>
 
----
 ---
 
 ## Installation
