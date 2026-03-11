@@ -14,7 +14,7 @@ Streamlit UI, and the model retrains on those corrections, continuously improvin
 from real-world errors.
 
 **The full pipeline:**
-- **Audit**: AI analyses every frame of a driving video
+- **Audit**: AI analyses every frame of a driving video/ or Images
 - **Flag**: Low-confidence frames are automatically flagged
 - **Review**: Human corrects AI mistakes through the UI
 - **Retrain**: Model learns from human corrections
@@ -27,7 +27,7 @@ from real-world errors.
 | Page | Description |
 | :-- | :-- |
 | Home | Project overview and system architecture |
-| Run Audit | Upload dashcam video, get annotated output with Grad-CAM steering arc |
+| Run Audit | Upload dashcam video/Images, get annotated output with Grad-CAM steering arc |
 | Review Flags | View flagged uncertain frames and correct AI mistakes |
 | Feedback Retrain | Merge human corrections into training data and retrain |
 | Session Logs | View past audit sessions, action distribution charts, trust over time |
