@@ -71,8 +71,8 @@ def train():
         print(f"  {action:15s}: {count} images")
 
   
-    # 80/20 train/val split
-    val_size   = int(0.2 * len(full_dataset))
+    # 95/5 train/val split
+    val_size   = int(0.05 * len(full_dataset))
     train_size = len(full_dataset) - val_size
     train_set, val_set = random_split(full_dataset, [train_size, val_size])
 
@@ -93,7 +93,7 @@ def train():
 
     model     = DrivingCNN().to(device)
     optimizer = optim.Adam(model.parameters(), lr=1e-4, weight_decay=1e-5)
-    criterion = nn.CrossEntropyLoss()  # No weight needed — sampler handles balance
+    criterion = nn.CrossEntropyLoss(label_smoothing=0.15)
     scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=5, gamma=0.5)
 
     best_val_acc = 0.0
