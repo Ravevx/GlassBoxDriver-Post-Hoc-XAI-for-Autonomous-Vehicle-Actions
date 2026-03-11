@@ -36,7 +36,7 @@ from real-world errors.
 
 ### Live Screen Inference (screen_ai.py)
 
-Real-time predictions overlaid on game footage with steering arc and probability bars:
+Real-time predictions overlaid on game footage with steering arc and probability bars: (ignore label bug [left-right] on overlay)
 
 <img src="Images/SS BRAKE.png" alt="Brake Prediction" width="400"/><img src="Images/SS go straight.png" alt="Go Straight Prediction" width="400"/>
 <img src="Images/SS turn left1.png" alt="Turn Left Prediction" width="400"/><img src="Images/SS turn right1.png" alt="Turn Right Prediction" width="400"/>
