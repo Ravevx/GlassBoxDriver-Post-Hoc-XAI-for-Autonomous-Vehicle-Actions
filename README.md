@@ -40,7 +40,18 @@ model to continuously learn and improve from real-world errors over time.
 | Turn Left | steering > 0.3 rad |
 | Turn Right | steering < -0.3 rad |
 
+## Streamlit UI Pages
+![Dashboard Home](images/UI_Runaudit.png)
+| Page | Description |
+| :-- | :-- |
+| Home | Project overview and system architecture |
+| Run Audit | Upload dashcam video, get annotated output with Grad-CAM steering arc |
+| Review Flags | View flagged uncertain frames and correct AI mistakes |
+| Feedback Retrain | Merge human corrections into training data and retrain |
+| Session Logs | View past audit sessions, action distribution charts, trust over time |
+![Dashboard Home](images/UI_ReviweFlags.png)
 
+---
 ---
 
 ## Installation
@@ -307,17 +318,7 @@ Apply get_label() rules:
 
 ---
 
-## Streamlit UI Pages
 
-| Page | Description |
-| :-- | :-- |
-| Home | Project overview and system architecture |
-| Run Audit | Upload dashcam video, get annotated output with Grad-CAM steering arc |
-| Review Flags | View flagged uncertain frames and correct AI mistakes |
-| Feedback Retrain | Merge human corrections into training data and retrain |
-| Session Logs | View past audit sessions, action distribution charts, trust over time |
-
----
 
 ## 📊 Model Architecture
 
