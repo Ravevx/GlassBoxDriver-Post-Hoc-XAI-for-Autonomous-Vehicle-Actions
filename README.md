@@ -25,16 +25,16 @@ approve the corrections, and trigger a feedback retraining cycle — causing the
 model to continuously learn and improve from real-world errors over time.
 
 **The full pipeline:**
-- **Audit** — AI analyses every frame of a driving video
-- **Flag** — Low-confidence frames are automatically flagged
-- **Review** — Human corrects AI mistakes through the UI
-- **Retrain** — Model learns from human corrections
-- **Repeat** — System continuously improves with use
+- **Audit**: AI analyses every frame of a driving video
+- **Flag**: Low-confidence frames are automatically flagged
+- **Review**: Human corrects AI mistakes through the UI
+- **Retrain**: Model learns from human corrections
+- **Repeat**: System continuously improves with use
 
 **5 Predicted Actions:**
 | Action | Trigger Condition |
 |---|---|
-| Go Straight | Default — no strong signal |
+| Go Straight | Default- no strong signal |
 | Brake | brake_switch active OR brake > 5 |
 | Accelerate | throttle > 200 AND speed > 5 |
 | Turn Left | steering > 0.3 rad |
