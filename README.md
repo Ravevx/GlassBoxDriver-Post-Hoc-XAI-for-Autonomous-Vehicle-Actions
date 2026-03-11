@@ -8,21 +8,15 @@
 
 ## Project Overview
 
-GlassBoxDriver is a post-hoc explainability system for autonomous vehicle decision
-making, built on EfficientNet-B0 and the nuScenes Mini dataset.
+GlassBoxDriver is a post-hoc XAI system for autonomous vehicle decision making,
+built on EfficientNet-B0 and nuScenes Mini. It analyses driving footage
+frame-by-frame, predicts actions in real-time, and explains each decision via
+Grad-CAM heatmaps and a steering arc overlay showing predicted direction and turn degree.
 
-The system analyses dashcam or game footage frame-by-frame, predicts driving
-actions in real-time, and — crucially — explains **WHY** the AI made each
-decision. Using Grad-CAM heatmaps, it visually highlights which regions of the
-road scene influenced the model's prediction, and overlays a steering arc showing
-predicted direction and degree of turn.
-
-What makes GlassBoxDriver different from a standard classifier is its
-**closed-loop human feedback pipeline**. When the model is uncertain about a
-decision, those frames are automatically flagged for human review. A human
-operator can then correct the AI's mistakes directly through the Streamlit UI,
-approve the corrections, and trigger a feedback retraining cycle — causing the
-model to continuously learn and improve from real-world errors over time.
+GlassBoxDriver features a closed-loop human feedback
+pipeline- uncertain frames are auto-flagged, a human corrects them via the
+Streamlit UI, and the model retrains on those corrections, continuously improving
+from real-world errors.
 
 **The full pipeline:**
 - **Audit**: AI analyses every frame of a driving video
@@ -41,7 +35,8 @@ model to continuously learn and improve from real-world errors over time.
 | Turn Right | steering < -0.3 rad |
 
 ## Streamlit UI Pages
-![Dashboard Home](images/UI_Runaudit.png)
+
+<img src="images/UI_Runaudit.png" alt="UI_RunAudit" width="500"/>
 | Page | Description |
 | :-- | :-- |
 | Home | Project overview and system architecture |
@@ -49,7 +44,18 @@ model to continuously learn and improve from real-world errors over time.
 | Review Flags | View flagged uncertain frames and correct AI mistakes |
 | Feedback Retrain | Merge human corrections into training data and retrain |
 | Session Logs | View past audit sessions, action distribution charts, trust over time |
-![Dashboard Home](images/UI_ReviweFlags.png)
+
+<img src="images/UI_ReviweFlags.png" alt="UI_HumanReview" width="500"/>
+
+### 🎮 Live Screen Inference (screen_ai.py)
+
+Real-time predictions overlaid on game footage with steering arc and probability bars:
+<img src="images/SS BRAKE.png" alt="Brake Prediction" width="500"/>
+<img src="images/SS go straight.png" alt="Go Straight Prediction" width="500"/>
+<img src="images/SS turn left1.png" alt="Turn Left Prediction" width="500"/>
+<img src="images/SS turn right1.png" alt="Turn Right Prediction" width="500"/>
+<img src="images/SS brake2.png" alt="Brake Prediction 2" width="500"/>
+
 
 ---
 ---
