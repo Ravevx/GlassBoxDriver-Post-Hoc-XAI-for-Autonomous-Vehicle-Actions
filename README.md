@@ -52,8 +52,8 @@ decision using Grad-CAM heatmaps and displays a real-time steering arc overlay.
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/GlassBoxDriver.git
-cd GlassBoxDriver
+git clone https://github.com/Ravevx/GlassBoxDriver-Post-Hoc-XAI-for-Autonomous-Vehicle-Actions.git
+cd GlassBoxDriver-Post-Hoc-XAI-for-Autonomous-Vehicle-Actions
 ```
 
 
@@ -166,6 +166,14 @@ GlassBoxDriver/
 ├── output/                 # Annotated audit videos saved here
 ├── logs/                   # Session CSV logs saved here
 └── README.md
+├── utils/
+    └──balance_dataset.py #Undersample all classes to equal size
+    └──check_canbus.py #run this to see structure
+    └──check_dataset.py #Verify images + labels are correctly paired
+    └──fix_cleanup.py #Delete all augmented files (keep only originals)
+    └──aug_data.py Flip images to augment
+    └──review_app.py #Human review UI for flagged frames
+    └── 
 ```
 
 
