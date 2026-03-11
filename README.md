@@ -4,29 +4,32 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.1+-orange.svg)](https://pytorch.org)
 [![Streamlit](https://img.shields.io/badge/Streamlit-Demo-blue.svg)](https://streamlit.io)
 
-Post-hoc explainability system for autonomous driving decisions using Grad-CAM,
-EfficientNet-B0, and nuScenes Mini dataset.
-
----
-
-## 📋 Table of Contents
-- [Project Overview](#project-overview)
-- [System Requirements](#system-requirements)
-- [Installation](#installation)
-- [Dataset Setup](#dataset-setup)
-- [Project Structure](#project-structure)
-- [Running the Project](#running-the-project)
-- [How It Works](#how-it-works)
-- [Streamlit UI Pages](#streamlit-ui-pages)
-- [Troubleshooting](#troubleshooting)
-
 ---
 
 ## 🧠 Project Overview
 
-GlassBoxDriver analyses dashcam or game footage frame-by-frame and predicts
-driving actions using a deep learning model. It explains WHY the AI made each
-decision using Grad-CAM heatmaps and displays a real-time steering arc overlay.
+GlassBoxDriver is a post-hoc explainability system for autonomous vehicle decision
+making, built on EfficientNet-B0 and the nuScenes Mini dataset.
+
+The system analyses dashcam or game footage frame-by-frame, predicts driving
+actions in real-time, and — crucially — explains **WHY** the AI made each
+decision. Using Grad-CAM heatmaps, it visually highlights which regions of the
+road scene influenced the model's prediction, and overlays a steering arc showing
+predicted direction and degree of turn.
+
+What makes GlassBoxDriver different from a standard classifier is its
+**closed-loop human feedback pipeline**. When the model is uncertain about a
+decision, those frames are automatically flagged for human review. A human
+operator can then correct the AI's mistakes directly through the Streamlit UI,
+approve the corrections, and trigger a feedback retraining cycle — causing the
+model to continuously learn and improve from real-world errors over time.
+
+**The full pipeline:**
+- **Audit** — AI analyses every frame of a driving video
+- **Flag** — Low-confidence frames are automatically flagged
+- **Review** — Human corrects AI mistakes through the UI
+- **Retrain** — Model learns from human corrections
+- **Repeat** — System continuously improves with use
 
 **5 Predicted Actions:**
 | Action | Trigger Condition |
