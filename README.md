@@ -1,4 +1,4 @@
-# 🚗 VideoDrive-XAI
+# VideoDrive-XAI
 ## Explainable End-to-End Autonomous Driving
 
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.1+-orange.svg)](https://pytorch.org)
@@ -6,7 +6,7 @@
 
 ---
 
-## 🧠 Project Overview
+## Project Overview
 
 GlassBoxDriver is a post-hoc explainability system for autonomous vehicle decision
 making, built on EfficientNet-B0 and the nuScenes Mini dataset.
@@ -40,18 +40,10 @@ model to continuously learn and improve from real-world errors over time.
 | Turn Left | steering > 0.3 rad |
 | Turn Right | steering < -0.3 rad |
 
----
-
-## 💻 System Requirements
-
-- Python 3.10+
-- CUDA-compatible GPU (recommended) or CPU
-- ~5GB free disk space (for nuScenes Mini dataset)
-- Windows / Linux / Mac
 
 ---
 
-## ⚙️ Installation
+## Installation
 
 ### 1. Clone the Repository
 ```bash
@@ -78,7 +70,7 @@ pip install streamlit opencv-python timm matplotlib tqdm mss pillow
 
 ---
 
-## 📦 Dataset Setup
+## Dataset Setup
 
 ### Step 1 - Download nuScenes Mini Dataset
 
@@ -134,7 +126,7 @@ NUSCENES_ROOT = r"C:\your\path\to\data\nuscenes"
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 GlassBoxDriver/
@@ -182,7 +174,7 @@ GlassBoxDriver/
 
 ---
 
-## 🚀 Running the Project
+## Running the Project
 
 Follow these steps in order:
 
@@ -250,7 +242,7 @@ Press `Q` to quit.
 
 ---
 
-## 🔍 How It Works
+## How It Works
 
 ```
 dataset.py   -->  Extracts frames from nuScenes cameras
@@ -315,7 +307,7 @@ Apply get_label() rules:
 
 ---
 
-## 🖥️ Streamlit UI Pages
+## Streamlit UI Pages
 
 | Page | Description |
 | :-- | :-- |
@@ -324,22 +316,6 @@ Apply get_label() rules:
 | Review Flags | View flagged uncertain frames and correct AI mistakes |
 | Feedback Retrain | Merge human corrections into training data and retrain |
 | Session Logs | View past audit sessions, action distribution charts, trust over time |
-
-
----
-
-## 🛠️ Troubleshooting
-
-| Error | Fix |
-| :-- | :-- |
-| `cv2.error: function not implemented` | `pip uninstall opencv-python-headless && pip install opencv-python` |
-| `No weights found. Using random init` | Run `python train.py` first to generate model weights |
-| `EfficientNet has no attribute layer4` | Update GradCAM hook to `model.backbone.blocks[-1][-1]` in `src/gradcam.py` |
-| Always predicts Go Straight | Ensure `Normalize([0.485,0.456,0.406],[0.229,0.224,0.225])` is in inference transform |
-| `UnicodeEncodeError` on Windows | Replace arrow symbols with `-` in print statements in `analyse.py` |
-| Video audit runs on wrong video | Ensure `app.py` passes `video_path` as argument to `analyse.py` subprocess |
-| `No images found in data/train/` | Run `python dataset.py` before `python train.py` |
-
 
 ---
 
@@ -364,7 +340,7 @@ Linear(256->5)
 
 ---
 
-## 📜 Credits
+## Credits
 
 - **Dataset:** [nuScenes Mini](https://www.nuscenes.org/) by Motional
 - **Model Backbone:** EfficientNet-B0 via [timm](https://github.com/huggingface/pytorch-image-models)
