@@ -48,7 +48,7 @@ from real-world errors.
 ---
 
 
-### 🎮 Live Screen Inference (screen_ai.py)
+### Live Screen Inference (screen_ai.py)
 
 Real-time predictions overlaid on game footage with steering arc and probability bars:
 
