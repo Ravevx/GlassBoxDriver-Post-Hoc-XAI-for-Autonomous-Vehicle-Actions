@@ -8,7 +8,7 @@ from PIL import Image
 from mss import mss
 from torchvision import transforms
 from src.decision import DrivingCNN, ACTIONS
-
+#fix needed for steering angles
 ACTION_STEERING = {
     "Go Straight" :   0,
     "Brake"       :   0,
